@@ -1,7 +1,7 @@
 # Weather Station with esp8266-dht11
 ## Weather Station: Basic IoT Projects for Beginners. 
 
-<img src="https://github.com/ObjectMatrix/weather-station-esp8266-dht11/blob/main/station.png" width="200">
+<img src="https://github.com/ObjectMatrix/weather-station-esp8266-dht11/blob/main/station.png" width="400">
 
 ## wiring
 
@@ -10,4 +10,4 @@
 
 # Scanning Temperature Humidity in every 10 seconds and Update data
 
-![www view](https://github.com/ObjectMatrix/weather-station-esp8266-dht11/blob/main/www.png)
+<img src="https://github.com/ObjectMatrix/weather-station-esp8266-dht11/blob/main/www.png" width="400">
