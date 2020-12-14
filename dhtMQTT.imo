@@ -81,7 +81,7 @@ void setup(){
   Serial.println(WiFi.localIP());
   client.setServer(mqtt_server, mqtt_port);
   timeClient.begin();
-  timeClient.setTimeOffset(-3600*5);
+  timeClient.setTimeOffset(-3600*5); // Eastern Timezone (EST)
   // ESP.deepSleep(15e6);
 }
  
