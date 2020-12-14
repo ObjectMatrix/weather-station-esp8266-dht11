@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86">
+    <title>Weather Station</title>
+    <style type="text/css">
+      .numberCircle {
+        float: left;
+        width: 120px;
+        line-height: 120px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 32px;
+        border: 2px solid #666;
+        margin: 20px;
+      }
+      p {
+        margin: 10px;
+        text-indent: 0ch;
+        width: 800px;
+      }
+      
+      p.pilcrow {
+         text-indent: 0;
+         display: inline;
+      }
+      .footer {
+        font-size: .2em;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: black;
+        color: white;
+        text-align: center;
+      }
+    </style>
+
+  <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h1>Temperature and Humidity</h1>
+    <!-- <div id="theWholeThing" style="height:100%; width:100%; overflow: hidden;"> -->
+      <div class="numberCircle" id="temp">  </div>
+      <div class="numberCircle" id="humid">  </div>
+      <div class="numberCircle" id="time">  </div>
+
+    <script>
+      var temp = document.getElementById('temp')
+      var humid = document.getElementById('humid')
+      var timediv = document.getElementById('time')
+
+      var temperature = '';
+      var humidity = '';
+      var timeStr = '00:00:00';
+
+      (function () {
+        var socket = io()
+        socket.on('temperature', function(data) {
+          temperature  = '' + Math.round(parseFloat(data))
+          console.log(temperature)
+        });
+        socket.on('humidity', function(data) {
+          humidity  = '' + parseInt(data)
+          console.log(humidity)
+        });
+        socket.on('time', function(data) {
+          timeStr  = '' + data
+          console.log(timeStr)
+        });
+      })();
+
+  	setInterval(() => {
+        temp.innerHTML = temperature + '&deg;F'
+        humid.innerHTML = humidity + '%'
+        timediv.innerHTML = timeStr
+    }, 500);
+    </script>
+   <footer class="footer"> 
+     <small>&copy;2020-2021, Ahm.Asaduzzaman@icloud.com</small> 
+   </footer>
+  </body>
+</html>
+
+
+
+
